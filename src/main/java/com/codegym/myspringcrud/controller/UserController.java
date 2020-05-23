@@ -39,4 +39,16 @@ public class UserController {
         return "editUser";
     }
 
+    @RequestMapping(value = "save", method = RequestMethod.POST)
+    public String save(User user) {
+        userService.saveUser(user);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteUser(@RequestParam("id") Long userId, Model model) {
+        userService.deleteUser(userId);
+        return "redirect:/";
+    }
+
 }
